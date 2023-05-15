@@ -42,8 +42,8 @@ export default function App() {
           {/* -------- cover and synopsis --------- */}
           <View style={styles.coverSynopsis}>
             <Image source={film} style={styles.poster} />
-            <View>
-              <Text style={[styles.whiteText, styles.synopsis]}>
+            <View style={styles.synopsisAndButton}>
+              <Text style={styles.whiteText}>
                 When Earth becomes uninhabitable in the future, a farmer and
                 ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft.
               </Text>
@@ -86,31 +86,51 @@ export default function App() {
             </TouchableOpacity>
           </View>
           {/* -------- cast --------- */}
-          <View style={styles.allCast}>
-            <View style={styles.castMember}>
-              <Image source={matthew} style={styles.castPic} />
-              <Text style={styles.castName}>Matthew Mcconaughey</Text>
-              <Text>Cooper</Text>
+          <ScrollView horizontal={true}>
+            <View style={styles.allCast}>
+              <View style={styles.castMember}>
+                <Image source={matthew} style={styles.castPic} />
+                <Text numberOfLines={1} style={styles.castName}>
+                  Matthew Mcconaughey
+                </Text>
+                <Text>Cooper</Text>
+              </View>
+              <View style={styles.castMember}>
+                <Image source={anne} style={styles.castPic} />
+                <Text numberOfLines={1} style={styles.castName}>
+                  Anne Hathaway
+                </Text>
+                <Text>Brand</Text>
+              </View>
+              <View style={styles.castMember}>
+                <Image source={jessica} style={styles.castPic} />
+                <Text numberOfLines={1} style={styles.castName}>
+                  Jessica Chastain
+                </Text>
+                <Text>Murph</Text>
+              </View>
+              <View style={styles.castMember}>
+                <Image source={mackenzie} style={styles.castPic} />
+                <Text numberOfLines={1} style={styles.castName}>
+                  Mackenzie Foy
+                </Text>
+                <Text>Young Murph</Text>
+              </View>
             </View>
-            <View style={styles.castMember}>
-              <Image source={anne} style={styles.castPic} />
-              <Text style={styles.castName}>Anne Hathaway</Text>
-              <Text>Brand</Text>
+          </ScrollView>
+          {/* -------- prod --------- */}
+          <View style={styles.prod}>
+            <View>
+              <Text style={styles.jobTitle}>Director</Text>
+              <Text>Christopher Nolan</Text>
             </View>
-            <View style={styles.castMember}>
-              <Image source={jessica} style={styles.castPic} />
-              <Text style={styles.castName}>Jessica Chastain</Text>
-              <Text>Murph</Text>
-            </View>
-            <View style={styles.castMember}>
-              <Image source={mackenzie} style={styles.castPic} />
-              <Text style={styles.castName}>Mackenzie Foy</Text>
-              <Text>Young Murph</Text>
+            <View>
+              <Text style={styles.jobTitle}>Writers</Text>
+              <Text>
+                Jonathan Nolan (written by) and Christopher Nolan (written by)
+              </Text>
             </View>
           </View>
-          {/* -------- prod --------- */}
-
-          <View></View>
         </View>
       </ScrollView>
       <StatusBar style="auto" />
@@ -123,8 +143,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     color: "white",
-    // alignItems: "center",
-    // justifyContent: "center",
     marginTop: Constants.statusBarHeight,
   },
   secondContainer: {
@@ -172,13 +190,13 @@ const styles = StyleSheet.create({
     width: 100,
     marginRight: 10,
   },
-  synopsis: {
+  synopsisAndButton: {
+    flex: 1,
     marginBottom: 10,
-    width: 220,
+    gap: 10,
   },
   addWatchList: {
-    height: 50,
-    width: 220,
+    height: 40,
     backgroundColor: "blue",
     justifyContent: "center",
     alignItems: "center",
@@ -236,16 +254,28 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   castMember: {
-    // width: 150,
+    paddingRight: 0,
+    width: 150,
     backgroundColor: "green",
     flexWrap: "nowrap",
   },
   castPic: {
+    width: "100%",
     height: 200,
-    width: 150,
   },
   castName: {
+    width: "100%",
     fontWeight: "bold",
-    overflow: "hidden",
+    ellipsizeMode: "tail",
+  },
+  // -------- prod ---------
+  prod: {
+    marginTop: 15,
+    marginBottom: 15,
+    gap: 15,
+  },
+  jobTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
